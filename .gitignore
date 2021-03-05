@@ -1,0 +1,22 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# misc
+.DS_Store
+/.history
+/dist
+/client
+.env
+server.log
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+yarn.lock
+junit.xml

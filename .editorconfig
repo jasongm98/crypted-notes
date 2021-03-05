@@ -1,0 +1,18 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[{*.json,*.yaml,*.yml,.vera,.babelrc,.eslintrc}]
+indent_size = 2
+
+[{*.json,.vera,.babelrc}]
+insert_final_newline = false

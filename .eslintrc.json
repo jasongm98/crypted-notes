@@ -1,0 +1,33 @@
+{
+  "extends": "airbnb-base",
+  "plugins": ["jest"],
+  "env": {
+    "node": true,
+    "es6": true,
+    "browser": true,
+    "jest": true
+  },
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "implicit-arrow-linebreak": "off",
+    "comma-dangle": "off",
+    "indent": ["error", 2],
+    "no-trailing-spaces": "off",
+    "arrow-parens": [
+      2,
+      "as-needed",
+      {
+        "requireForBlockBody": true
+      }
+    ]
+  }
+}
