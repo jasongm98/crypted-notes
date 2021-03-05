@@ -1,3 +1,4 @@
+import { exceptionsCodes, NoteException } from '../exceptions';
 import { Note } from './schemas';
 
 const getOneNoteById = id => Note.findOne({
@@ -38,9 +39,22 @@ const deleteNote = id => Note.destroy({
   }
 });
 
+const verifyExistId = async (id) => {
+  const result = await Note.count({
+    where: {
+      id,
+    },
+  });
+
+  if (result === 0) {
+    throw new NoteException(exceptionsCodes.note.NOT_EXIST_IDENTIFIER);
+  }
+};
+
 export default {
   getOneNoteById,
   insert: insertNote,
   update: updateNote,
   delete: deleteNote,
+  verifyExistId,
 };
