@@ -1,0 +1,14 @@
+extends layouts/base.pug
+block content
+  if !error
+    .alert.alert-warning
+      small
+        | The note will self-destruct&nbsp;
+        span.font-weight-bold #{expiration}.
+
+    .card.bg-light.mb-4
+      .card-body!= note
+
+  if error
+    .text-center
+      a.btn.btn-info(href="/view/" + noteId) Go back

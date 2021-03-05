@@ -1,0 +1,9 @@
+extends layouts/base.pug
+block content
+  form.form-inline(action="/view/" + note.id, method="post", autocomplete="off")
+    label.ml-3.mb-2(for="password")
+      | Password&nbsp;
+      i.bi.bi-info-circle(data-toggle="tooltip", data-placement="bottom", title="Enter the password to read this note")
+    input.form-control.ml-3(name="password", type="password", value=note.password)
+    input(type="hidden", name="_csrf", value=csrfToken)
+    button.btn.btn-primary.ml-3(type="submit") Unlock

@@ -1,0 +1,46 @@
+extends layouts/base.pug
+block content
+  form(action="/send", method="post", autocomplete="off")
+    fieldset.form-group
+      label(for="receipts")
+        | Receipts&nbsp;
+        i.bi.bi-info-circle(data-toggle="tooltip", data-placement="right", title="E-mail addresses separated with \";\"")
+      input.form-control(name="receipts", type="text")
+    fieldset.form-group
+      label(for="message") Note
+      textarea#summernote.form-control(name="message", rows="8", placeholder="Write your note here...") #{note.message}
+    fieldset.form-row
+      .form-group.col-md-6.col-sm-12
+        label(for="password")
+          | Password&nbsp;
+          i.bi.bi-info-circle(data-toggle="tooltip", data-placement="right", title="If set, it will be requested before decrypt the note")
+        input.form-control(name="password", type="password", aria-describedby="newNotePassword")
+      .form-group.col-md-6.col-sm-12
+        label(for="confirmPassword") Confirmation
+        input.form-control(name="confirmPassword", type="password", aria-describedby="newNoteConfirmPassword")
+    fieldset.form-row
+      .form-group.col-md-4.col-sm-12
+        label(for="expiration") Note self-destructs
+        select.form-control(name="expiration")
+          option(value="0", selected=(note.expiration == "0")) after reading it
+          option(value="1", selected=(note.expiration == "1")) 1 hour from now
+          option(value="24", selected=(note.expiration == "24")) 24 hours from now
+          option(value="168", selected=(note.expiration == "168")) 7 days from now
+          option(value="720", selected=(note.expiration == "720")) 30 days from now
+      .form-group.col-md-4.col-sm-12
+        label(for="notificationEmail") Destruction notification e-mail
+        input.form-control(type="email", name="notificationEmail" value=note.notificationEmail)
+      .form-group.col-md-4.col-sm-12
+        label(for="reference")
+          | Note reference&nbsp;
+          small.text-muted (optional)
+        input.form-control(type="text", name="reference", value=note.reference)
+    input(type="hidden", name="_csrf", value=csrfToken)
+    .form-actions
+      button.btn.btn-primary.btn-block(type="submit") Send note
+
+//- block footer
+//-   ol
+//-     li Create a note and get a link
+//-     li Copy the link and send it to whom you want to read the note
+//-     li The note will self-destruct after being read

@@ -1,0 +1,11 @@
+extends layouts/base.pug
+block content
+    .alert.alert-warning
+        small Copy the link, paste it into an email or instant message and send it to whom you want to read the note.
+    .card
+      .card-body.bg-light #{link}
+      small.card-footer.bg-dark.text-white.font-italic
+        | The note will self-destruct&nbsp;
+        span.font-weight-bold #{expiration}.
+
+
